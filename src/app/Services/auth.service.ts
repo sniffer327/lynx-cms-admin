@@ -46,6 +46,7 @@ export class AuthService {
   }
 
   public static LoginInfo: LoginInfoModel = new LoginInfoModel();
+
   public LoginInfo: LoginInfoModel;
 
   public CheckAuth(): void {
@@ -67,7 +68,7 @@ export class AuthService {
    * @returns {Observable<any>}
    * @constructor
    */
-  private checkUserAuth(): Observable<any> {
+  public checkUserAuth(): Observable<LoginInfoModel> {
     return this.lynxService.Get('/Account/CheckAuth');
   }
 }
