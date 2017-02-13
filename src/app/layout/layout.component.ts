@@ -15,9 +15,6 @@ export class LayoutComponent implements OnInit {
   // Информация о пользователе
   public loginInfo: LoginInfoModel;
 
-  // Список сайтов
-  public sitesList: any[];
-
   // Имя текущего сайта
   public currentSiteName: string;
 
@@ -33,23 +30,6 @@ export class LayoutComponent implements OnInit {
    */
   public logOut(): void {
     this.authService.Logout();
-  }
-
-  /**
-   * Получаем список сайтов, принадлежащих пользователю
-   * Делаем активным выбранный сайт
-   * @constructor
-   */
-  private getSites(): void {
-    this.lynxService.Get("/Main/GetSitesForUser").subscribe(res => {
-      this.sitesList = res;
-
-      let siteId = AuthService.LoginInfo.CurrentSiteId;
-
-      let currentSite = this.sitesList.find((item) => item.id === siteId);
-
-      this.currentSiteName = currentSite.siteName;
-    }, error => console.log(error));
   }
 
   /**
@@ -96,9 +76,13 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginInfo = AuthService.LoginInfo;
+    this.authService.checkUserAuth().subscribe(res =>{
+      this.loginInfo = res;
+      let siteId = this.loginInfo.CurrentSiteId;
 
-    this.getSites();
+      let currentSite = this.loginInfo.UserSites.find((item) => item.id == siteId);
+      this.currentSiteName = currentSite.siteName;
+    });
   }
 
 }
