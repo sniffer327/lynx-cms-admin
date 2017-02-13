@@ -27,6 +27,7 @@ import {LynxLoginService} from "./Services/lynx-login.service";
       prefix: 'lynx-cms',
       storageType: 'localStorage'
     })
+
   ],
   providers: [
     AuthService,
