@@ -4,11 +4,11 @@
   <i class="material-icons">assignment</i>
 
   <span *ngIf="isEdit">
-    Редактирование товара - {{ item.title }}
+    Редактирование {{ categoryName }} - {{ item.title }}
   </span>
 
   <span *ngIf="!isEdit">
-    Добавление товара
+    Добавление {{ categoryName }}
   </span>
 
 </h4>
@@ -106,7 +106,7 @@
         <label for="item-meta_keywords" class="col-form-label">
           Meta-описание
         </label>
-        <textarea class="form-control" id="item-meta_desc" [(ngModel)]="item.meta_keywords" name="meta_desc"></textarea>
+        <textarea class="form-control" id="item-meta_desc" [(ngModel)]="item.meta_description" name="meta_desc"></textarea>
       </div>
 
     </div>

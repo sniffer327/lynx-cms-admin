@@ -11,6 +11,12 @@ const routes: Routes = [
   {path: 'news', component: ItemsComponent},
   {path: 'pages', component: ItemsComponent},
 
+  // Добавление элемента
+  {path: 'edit-goods', component: ItemsEditComponent},
+  {path: 'edit-news', component: ItemsEditComponent},
+  {path: 'edit-pages', component: ItemsEditComponent},
+
+  // Редактирование элемента
   {path: 'edit-goods/:id', component: ItemsEditComponent},
   {path: 'edit-news/:id', component: ItemsEditComponent},
   {path: 'edit-pages/:id', component: ItemsEditComponent}
