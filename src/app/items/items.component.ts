@@ -19,7 +19,7 @@ export class ItemsComponent implements OnInit {
   // Тип редактируемых элементов
   public itemTypeId: number = 1;
   public itemTypeName: string = 'Список товаров';
-  public editUrlSegment: string = "item-edit";
+  public editUrlSegment: string = "edit-goods";
 
   // Столбцы таблицы
   public itemsColumns: IItemColumn[];

@@ -19,6 +19,9 @@ export class ItemsEditComponent implements OnInit {
   public id?: number;
   public backPage: string;
 
+  // Наименование категории
+  public categoryName: string;
+
   public categories: CategoryModel[];
 
   constructor(private lynxService: LynxService,
@@ -31,17 +34,21 @@ export class ItemsEditComponent implements OnInit {
 
       // Определяем что редактировать
       switch (tmp) {
-        case "edit-goods":
-          this.backPage = "items";
+        case 'edit-goods':
+          this.backPage = 'items';
+          this.categoryName = 'товара';
           break;
-        case "edit-pages":
-          this.backPage = "pages";
+        case 'edit-pages':
+          this.backPage = 'pages';
+          this.categoryName = 'страницы';
           break;
-        case "edit-news":
-          this.backPage = "news";
+        case 'edit-news':
+          this.backPage = 'news';
+          this.categoryName = 'новости';
           break;
         default:
-          this.backPage = "items";
+          this.backPage = 'items';
+          this.categoryName = 'товара';
           break;
       }
     });

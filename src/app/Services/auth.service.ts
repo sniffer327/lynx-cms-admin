@@ -45,15 +45,15 @@ export class AuthService {
     );
   }
 
-  public static LoginInfo: LoginInfoModel = new LoginInfoModel();
-  public LoginInfo: LoginInfoModel;
-
+  /**
+   * Проверка авторизации
+   * @constructor
+   */
   public CheckAuth(): void {
-    this.checkUserAuth()
+    this.getUserInfo()
       .subscribe(
         res => {
-          LynxLoggingService.Log('Проверка авторизации ', res);
-          AuthService.LoginInfo = this.LoginInfo = res;
+          LynxLoggingService.Log('Пользователь авторизован');
         },
         () => {
           this.router.navigate(['/auth']);
@@ -63,11 +63,11 @@ export class AuthService {
   }
 
   /**
-   * Проверка авторизации
+   * Получение информации о пользователе
    * @returns {Observable<any>}
-   * @constructor
+   * * @constructor
    */
-  private checkUserAuth(): Observable<any> {
+  public getUserInfo(): Observable<any> {
     return this.lynxService.Get('/Account/CheckAuth');
   }
 }
