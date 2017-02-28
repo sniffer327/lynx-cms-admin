@@ -41,6 +41,10 @@
       color: #EEEEEE;
     }
 
+    md-input-container {
+      width: 100%;
+    }
+
     input + input {
       margin-top: $main-padding;
     }

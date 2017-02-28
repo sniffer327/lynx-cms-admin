@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {LynxLoggingService} from "./lynx-logging.service";
 import {LynxLoginService} from "./lynx-login.service";
-import {LoginInfoModel} from "../Models/login-info.model";
 
 @Injectable()
 export class AuthService {
