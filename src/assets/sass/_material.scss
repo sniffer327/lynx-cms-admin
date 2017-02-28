@@ -13,6 +13,11 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 
 @include angular-material-theme($candy-app-theme);
 
+// Переопределение стандартных стилей
 md-select {
   margin-top: 1rem;
+}
+
+md-input-container, md-select {
+  width: 100%;
 }
