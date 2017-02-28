@@ -37,7 +37,9 @@ export class LynxService {
       .map(
         res => res.json()
       )
-      .catch(this.handleError);
+      .catch(
+        error => this.handleError(error)
+      );
 
     return result;
   }
@@ -62,7 +64,9 @@ export class LynxService {
       .map(
         res => res.json()
       )
-      .catch(this.handleError);
+      .catch(
+        error => this.handleError(error)
+      );
 
     return result;
   }

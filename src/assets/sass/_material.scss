@@ -2,20 +2,22 @@
 
 @import "vars";
 
-@include md-core();
+@include mat-core();
 
-$primary: md-palette($md-blue);
-$accent:  md-palette($md-blue);
+$candy-app-primary: mat-palette($mat-blue);
+$candy-app-accent:  mat-palette($mat-blue);
 
-$theme: md-light-theme($primary, $accent);
+$candy-app-warn: mat-palette($mat-red);
 
-@include angular-material-theme($theme);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
 
-// Default input full width
-md-input-container, md-select {
-  width: 100%;
-}
+@include angular-material-theme($candy-app-theme);
 
+// Переопределение стандартных стилей
 md-select {
   margin-top: 1rem;
+}
+
+md-input-container, md-select {
+  width: 100%;
 }

@@ -27,7 +27,6 @@ export class AuthorizationComponent implements OnInit {
       .subscribe(
         res => {
           this.loginHandler(res);
-          this.isLogedIn.setAuthData();
         },
 
         error => this.loginHandler(error)
@@ -41,8 +40,11 @@ export class AuthorizationComponent implements OnInit {
    */
   private loginHandler(response: any): void {
 
-    if (response != null || response.email != null) {
+    if (response || response.email) {
       this.authService.CheckAuth();
+
+      this.isLogedIn.setAuthData();
+
       this.router.navigate(['/']);
 
       console.log('Успешная авторизация');
