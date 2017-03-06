@@ -19,7 +19,6 @@ export class ItemImagesComponent implements OnInit {
         // Костыль. Заточен под md-button
         let isDragulaTrigger = handle
           .parentElement
-          .parentElement
           .classList
           .contains('dragula-trigger');
 
