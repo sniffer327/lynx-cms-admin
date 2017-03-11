@@ -1,12 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {Params, Router, ActivatedRoute} from "@angular/router";
-
-import {LynxLoggingService} from "../Services/lynx-logging.service";
-
-import {LynxService} from "../Services/lynx.service";
-
-import {CategoryModel} from "../Models/category.model";
-import {ItemModel} from "../Models/item.model";
+import {ItemModel} from "../../Models/item.model";
+import {CategoryModel} from "../../Models/category.model";
+import {LynxService} from "../../Services/lynx.service";
+import {LynxLoggingService} from "../../Services/lynx-logging.service";
 
 @Component({
   selector: 'items-edit',

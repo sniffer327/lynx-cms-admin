@@ -1,18 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {LynxLoggingService} from "../Services/lynx-logging.service";
-import {LynxService} from "../Services/lynx.service";
+import {LynxLoggingService} from "../../Services/lynx-logging.service";
+import {LynxService} from "../../Services/lynx.service";
 import {ActivatedRoute} from "@angular/router";
-import {SectionModel} from "../Models/section.model";
-import {IItemColumn} from "../Shared/lynx-table/Models/item.model";
+import {SectionModel} from "../../Models/section.model";
+import {IItemColumn} from "../../Shared/lynx-table/Models/item.model";
 
 @Component({
   selector: 'sections',
-  templateUrl: './sections.component.html',
-  styleUrls: ['./sections.component.css']
+  templateUrl: 'sections.component.html',
+  styleUrls: ['sections.component.css']
 })
 export class SectionsComponent implements OnInit {
 
   public sectionList: Array<SectionModel>;
+  public addEditPath: string = '/sections/edit';
+
 
   // Столбцы таблицы
   public itemsColumns: IItemColumn[];
@@ -32,11 +34,11 @@ export class SectionsComponent implements OnInit {
       {
         header: 'Название',
         data: 'name',
-        /*template: {
+        template: {
           type: 'link',
-          linkUrl: '/items/' + this.editUrlSegment,
+          linkUrl: this.addEditPath,
           param: 'id'
-        },*/
+        },
         styles: {
           'text-align': 'left'
         }
@@ -47,7 +49,8 @@ export class SectionsComponent implements OnInit {
       },
       {
         header: 'Отображается?',
-        data: 'visible'
+        data: 'visible',
+        pipe: 'flag'
       }
     ];
 

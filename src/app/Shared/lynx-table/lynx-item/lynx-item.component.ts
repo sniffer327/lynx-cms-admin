@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {IItemColumn, IItemTemplate} from "../Models/item.model";
 import {DatePipe} from "@angular/common";
+import {BoolPipe} from "../../../Pipes/bool-pipe.pipe";
 
 @Component({
   selector: 'lynx-item',
@@ -22,10 +23,11 @@ export class LynxItemComponent implements OnInit {
   // Параметр для ссылки
   public columnLinkParam: any;
 
-  constructor(private datePipe: DatePipe) { }
+  constructor(private datePipe: DatePipe,
+  private boolPipe: BoolPipe) { }
 
   // Получем данные для ячейки
-  GetData(): any {
+  public GetData(): any {
 
     // Получем pipe
     let columnPipe = this.column.pipe;
@@ -66,8 +68,11 @@ export class LynxItemComponent implements OnInit {
   // Трансформируем данные через pipe
   private PipeTransform(column: any, pipe: string): any {
 
-    if (pipe === 'date') {
-      return this.datePipe.transform(column, 'dd-MM-yy');
+    switch (pipe){
+      case "date": return this.datePipe.transform(column, 'dd-MM-yy');
+      case "flag": return this.boolPipe.transform(column);
+
+      default: return column;
     }
   }
 

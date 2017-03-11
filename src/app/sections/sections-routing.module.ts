@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {SectionsComponent} from "./sections.component";
+import {SectionsComponent} from "./sections/sections.component";
 import {SectionEditComponent} from "./section-edit/section-edit.component";
 
 const routes: Routes = [
@@ -13,5 +13,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class SectionsRoutingModule {
 }

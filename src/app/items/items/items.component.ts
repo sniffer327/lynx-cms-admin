@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {ItemModel} from "../../Models/item.model";
+import {IItemColumn} from "../../Shared/lynx-table/Models/item.model";
+import {LynxService} from "../../Services/lynx.service";
+import {LynxLoggingService} from "../../Services/lynx-logging.service";
 
-import {ItemModel} from "../Models/item.model";
-import {IItemColumn} from "../Shared/lynx-table/Models/item.model";
-
-import {LynxLoggingService} from "../Services/lynx-logging.service";
-import {LynxService} from "../Services/lynx.service";
 
 @Component({
   selector: 'app-items',

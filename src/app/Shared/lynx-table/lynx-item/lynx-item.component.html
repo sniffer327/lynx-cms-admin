@@ -1,6 +1,5 @@
 <!--Разметка для элемента таблицы-->
-<span *ngIf="GetTemplate() === null">
-  {{ GetData() }}
+<span *ngIf="GetTemplate() === null" [innerHTML]="GetData()">
 </span>
 
 <!--Разметка для ссылки-->

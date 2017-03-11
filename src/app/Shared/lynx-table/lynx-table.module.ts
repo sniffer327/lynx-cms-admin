@@ -8,6 +8,7 @@ import {RouterModule} from "@angular/router";
 import {LynxTableComponent} from "./lynx-table/lynx-table.component";
 import {LynxItemComponent} from './lynx-item/lynx-item.component';
 import {MaterialModule} from "@angular/material";
+import {BoolPipe} from "../../Pipes/bool-pipe.pipe";
 
 @NgModule({
   imports: [
@@ -18,11 +19,12 @@ import {MaterialModule} from "@angular/material";
 
   declarations: [
     LynxTableComponent,
-    LynxItemComponent,
+    LynxItemComponent
   ],
 
   providers: [
-    DatePipe
+    DatePipe,
+    BoolPipe
   ],
 
   exports: [LynxTableComponent]
