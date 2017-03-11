@@ -1,4 +1,5 @@
-import {SitesModel} from "./sites.model";
+import {SiteModel} from "./site.model";
+
 /**
  * Модель, получаемая при логине
  */
@@ -7,5 +8,5 @@ export class LoginInfoModel {
   public Name: string;
   public RoleId?: number;
   public CurrentSiteId?: number;
-  public UserSites: SitesModel[];
+  public UserSites: SiteModel[];
 }

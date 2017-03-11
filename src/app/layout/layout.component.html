@@ -62,12 +62,12 @@
           </button>
         </div>
 
-        <div class="col-sm-8 text-right" *ngIf="loginInfo">
+        <div *ngIf="userInfo" class="col-sm-8 text-right">
           <button class="toolbar-sites" [mdMenuTriggerFor]="sites" md-button>
             Текущий сайт: {{ currentSiteName }}
           </button>
           <md-menu #sites="mdMenu">
-            <button *ngFor="let site of loginInfo.UserSites"
+            <button *ngFor="let site of userInfo.UserSites"
                     (click)="changeSite(site.id, site.siteName)" md-menu-item>
               <span>{{ site.siteName }}</span>
             </button>

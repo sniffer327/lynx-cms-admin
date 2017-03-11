@@ -19,5 +19,5 @@ export class ItemModel {
   public DateEditing: Date;
   public ItemType: number;
   public ParentCategory: CategoryModel;
-  public Images: ImageModel[];
+  public Images: ImageModel[] = [];
 }

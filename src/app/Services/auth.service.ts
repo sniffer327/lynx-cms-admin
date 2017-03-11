@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {LynxLoggingService} from "./lynx-logging.service";
 import {LynxLoginService} from "./lynx-login.service";
-import {LoginInfoModel} from "../Models/login-info.model";
 
 @Injectable()
 export class AuthService {
@@ -45,16 +44,15 @@ export class AuthService {
     );
   }
 
-  public static LoginInfo: LoginInfoModel = new LoginInfoModel();
-
-  public LoginInfo: LoginInfoModel;
-
+  /**
+   * Проверка авторизации
+   * @constructor
+   */
   public CheckAuth(): void {
-    this.checkUserAuth()
+    this.getUserInfo()
       .subscribe(
         res => {
-          LynxLoggingService.Log('Проверка авторизации ', res);
-          AuthService.LoginInfo = this.LoginInfo = res;
+          LynxLoggingService.Log('Пользователь авторизован');
         },
         () => {
           this.router.navigate(['/auth']);
@@ -64,11 +62,11 @@ export class AuthService {
   }
 
   /**
-   * Проверка авторизации
+   * Получение информации о пользователе
    * @returns {Observable<any>}
-   * @constructor
+   * * @constructor
    */
-  public checkUserAuth(): Observable<LoginInfoModel> {
+  public getUserInfo(): Observable<any> {
     return this.lynxService.Get('/Account/CheckAuth');
   }
 }

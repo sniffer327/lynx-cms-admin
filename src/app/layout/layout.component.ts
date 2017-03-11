@@ -13,15 +13,34 @@ import {LynxService} from "../Services/lynx.service";
 export class LayoutComponent implements OnInit {
 
   // Информация о пользователе
-  public loginInfo: LoginInfoModel;
+  public userInfo: LoginInfoModel;
 
-  // Имя текущего сайта
+  // Наименование текущего сайта
   public currentSiteName: string;
 
   constructor(public authService: AuthService,
               private router: Router,
               private lynxService: LynxService,
               private localStorageService: LocalStorageService) {
+  }
+
+  /**
+   * Получение информации о пользователе
+   */
+  private getUserInfo(): void {
+    this.authService.getUserInfo()
+      .subscribe(
+        res => {
+          this.userInfo = res;
+
+          let sitesList = res.UserSites;
+
+          let currentSiteId = res.CurrentSiteId;
+
+          // Обновляем наименование текущего сайта
+          this.currentSiteName = sitesList.find(site => site.id === currentSiteId).siteName;
+        }
+      );
   }
 
   /**
@@ -39,8 +58,6 @@ export class LayoutComponent implements OnInit {
    * @constructor
    */
   public changeSite(siteId: number, siteName: string): void {
-    this.loginInfo.CurrentSiteId = siteId;
-
     this.currentSiteName = siteName;
 
     this.lynxService.Get("/Main/SetWorkingSite?siteId=" + siteId).subscribe(() => {
@@ -76,13 +93,7 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.checkUserAuth().subscribe(res =>{
-      this.loginInfo = res;
-      let siteId = this.loginInfo.CurrentSiteId;
-
-      let currentSite = this.loginInfo.UserSites.find((item) => item.id == siteId);
-      this.currentSiteName = currentSite.siteName;
-    });
+    this.getUserInfo();
   }
 
 }
