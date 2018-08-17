@@ -12,7 +12,6 @@ import {LynxService} from "./Services/lynx.service";
 import {LynxLoggingService} from "./Services/lynx-logging.service";
 import {LynxLoginService} from "./Services/lynx-login.service";
 
-
 @NgModule({
   declarations: [
     AppComponent,
