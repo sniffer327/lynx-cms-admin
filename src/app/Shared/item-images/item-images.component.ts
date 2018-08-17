@@ -31,6 +31,10 @@ export class ItemImagesComponent implements OnInit {
     this.images.unshift(new ImageModel);
   }
 
+  public addFiles(): void {
+    
+  }
+
   public deleteImage(image: ImageModel): void {
     this.images = this.images.filter((item) => item !== image);
 
