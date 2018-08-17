@@ -58,9 +58,14 @@ export class LynxService {
    */
   private ServicePost(url: string, data: any, options?: RequestOptionsArgs): Observable<any> {
     let body = JSON.stringify(data);
+
     let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
-    let opt = new RequestOptions({headers: headers});
-    let result = this.http.post(LynxConstants.apiUrl + url, data, opt)
+
+    if (options == null) {
+      options = new RequestOptions({headers: headers});
+    }
+
+    let result = this.http.post(LynxConstants.apiUrl + url, data, options)
       .map(
         res => res.json()
       )
@@ -73,6 +78,21 @@ export class LynxService {
 
   public Post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     return this.ServicePost(url, body, options);
+  }
+
+  public Upload(url: string, data: any): Observable<any> {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    let result = this.http.post(LynxConstants.apiUrl + url, data, options)
+      .map(
+        res => res.json()
+      )
+      .catch(
+        error => this.handleError(error)
+      );
+
+    return result;
   }
 
   /**
